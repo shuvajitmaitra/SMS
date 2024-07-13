@@ -11,8 +11,7 @@ function Routes() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <>{AuthStack(Stack)}</>
-        <>{ChatStack(Stack)}</>
+        {true ? <>{AuthStack(Stack)}</> : <>{ChatStack(Stack)}</>}
       </Stack.Navigator>
     </NavigationContainer>
   );
