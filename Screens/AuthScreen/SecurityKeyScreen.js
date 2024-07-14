@@ -14,9 +14,11 @@ import {
   responsiveScreenHeight,
   responsiveScreenWidth,
 } from "react-native-responsive-dimensions";
+import { useNavigation } from "@react-navigation/native";
 
 const SecurityKeyScreen = () => {
   const [key, setKey] = useState("");
+  const navigation = useNavigation();
   useEffect(() => {
     const characters =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -54,6 +56,14 @@ const SecurityKeyScreen = () => {
         forget your password, you will need this key to recover your account.
         Without this key, you won't be able to recover your account.
       </Text>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("ChatScreen");
+        }}
+        style={styles.loginButtonContainer}
+      >
+        <Text style={styles.buttonText}>Next</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -61,6 +71,30 @@ const SecurityKeyScreen = () => {
 export default SecurityKeyScreen;
 
 const styles = StyleSheet.create({
+  buttonText: {
+    color: "white",
+    fontWeight: "600",
+  },
+  loginButtonContainer: {
+    marginTop: responsiveScreenHeight(10),
+    backgroundColor: "#3f6ad8",
+    width: "30%",
+    minHeight: 35,
+    borderRadius: 100,
+    paddingHorizontal: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.29,
+    shadowRadius: 4.65,
+
+    elevation: 7,
+  },
   noticeText: {
     paddingHorizontal: responsiveScreenWidth(4),
     marginTop: responsiveScreenHeight(2),

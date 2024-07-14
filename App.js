@@ -8,6 +8,7 @@ import * as SplashScreen from "expo-splash-screen";
 import Fonts from "./constants/Fonts";
 import Routes from "./Navigations/Routes";
 import Splash from "./Screens/SplashScreen/Splash";
+import { AuthProvider } from "./Context/AuthContext";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -35,9 +36,11 @@ export default function App() {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <View style={styles.container}>
-          <Routes />
-        </View>
+        <AuthProvider>
+          <View style={styles.container}>
+            <Routes />
+          </View>
+        </AuthProvider>
       </PersistGate>
     </Provider>
   );
